@@ -1,0 +1,41 @@
+Parent seria a janela mãe / pai, da janela cujo irá utilizar.
+self é usado para caso formos usar tal objeto em outro local, se isso
+ocorrer, iremos trocar self por "MainWindow" que seria a Classe.
+
+
+self.adjustSize()
+self.setFixedSize(self.width(), self.height())
+
+Quando terminar de ajustar tudo, é recomendado colocar um tamanho
+em específico, caso queira.
+self.width(), self.height(), quando a janela se ajustar ao tamanho
+específico, o tamanho dela ficará fixo neste mesmo.
+
+É sempre recomendado você criar métodos, caso esteja acessando algo muito
+profundo na classe. Por exemplo, o 
+window.vertical_layout.addWidget(widget), é melhor fazer isso num método, para
+depois chamar apenas o "window.method" que fica bem mais prático.
+
+
+# Tipos de escrita
+    snake_case
+    PascalCase
+    camelCase
+
+Para métodos e variáveis pode ser usado snake_case, para classes, o PascalCase.
+O que não é recomendável, é usar mais de um padrão.
+
+Quando irá colocar apenas uma telinha para ler, é recomendado colocar "QLabel"
+quando for utilizar algo para editar, use "QLineEdit", ou "QTextEdit".
+
+É sempre recomendado olhar a definição de algo.
+Por exemplo, self.setAlignment() recebe uma flag, olhando na definição é
+possível ver que essas são as flags:
+
+def setAlignment(self, flag: PySide6.QtCore.Qt.AlignmentFlag) -> None: ...
+
+Então teria que acessar o AlignmentFlag, para ver quais flags, de tamanho pode
+usar.
+
+isso: margins = [TEXT_MARGIN for _ in range(4)]  irá gerar, isto,
+[TEXT_MARGIN, TEXT_MARGIN, TEXT_MARGIN, TEXT_MARGIN].

@@ -1,0 +1,26 @@
+    def _makeGrid(self):
+        for rowData, row in enumerate(self._gridMask):
+            for columnData, buttonText in enumerate(row):
+                print(f"Linha {rowData}, Coluna {columnData}, {buttonText}")
+
+Lembre disso, é importante.
+
+    def _insertButtonTextToDisplay(self, button):
+        button_text = button.text()
+        self.display.setText(button_text)
+
+setText, apaga o texto e coloca outro.
+
+    def _insertButtonTextToDisplay(self, button):
+        button_text = button.text()
+        self.display.insert(button_text)
+
+insert, adiciona o texto logo a frente.
+
+
+        if buttonText == "=":
+            self.display.setText(str(eval(self.display.text())))
+        else:
+            self.display.insert(buttonText)
+
+Eval, pode ser bom, mas é EXTREMAMENTE perigoso colocar em seu código.

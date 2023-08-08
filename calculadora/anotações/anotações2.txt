@@ -1,0 +1,13 @@
+Quando você vai na definição de alguma classe ou função, e tem "overload"
+significa que possui mais de uma maneira de chamar a mesma.
+
+class info(QLabel):
+    def __init__(self, text: str, parent: Optional[QWidget] = None) -> None:
+        super().__init__(text, parent)
+
+Primeiro, parent está se referindo ao widget "pai" do objeto, outra coisa,
+o Optional, significa que o parent ou não vai ter nada, ou ele vai ser um
+QWidget.
+
+Ele havia 2 overload, o que usamos, deixa o texto ser obrigatório, então
+caso essa classe for usada, terá que ser passado um texto.

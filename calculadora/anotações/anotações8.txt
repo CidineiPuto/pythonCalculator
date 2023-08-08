@@ -1,0 +1,54 @@
+            if "^" in self.equation:
+                result = eval(self.equation.replace("^", "**"))
+
+O replace troca  o sinal de "^" pelo "**"
+
+Msgbox pode ser feito várias coisas nele.
+
+        msgBox.setStandardButtons(
+            msgBox.StandardButton.Close,
+        )
+        msgBox.button(msgBox.StandardButton.Close).setText("Fechar")
+
+Se o msg box tiver dessa forma, será definido um button cujo nome era "close"
+para fechar. Também, é possível definir vários botões.
+
+        msgBox.setStandardButtons(
+            msgBox.StandardButton.Close | msgBox.StandardButton.Cancel
+        )
+
+Agora se quiser saber em qual a pessoa clicou:
+
+        msgBox.setStandardButtons(
+            msgBox.StandardButton.Close | msgBox.StandardButton.Cancel
+        )
+        msgBox.button(msgBox.StandardButton.Close).setText("Fechar")
+        result = msgBox.exec()
+        if result == msgBox.StandardButton.Close:
+            print("Clicou em close.")
+
+E pode definir um texto.
+
+msgBox.setInformativeText(""" TEXTO GRANDE """)
+
+
+    def keyPressEvent(self, event: QKeyEvent) -> None:
+        key = event.key() Pega o número da chave, um código
+        key = event.text() Pega o texto da chave
+        return super().keyPressEvent(event)
+
+
+
+Para saber o que foi pressionado, use "Qt.Key"
+
+    def keyPressEvent(self, event: QKeyEvent) -> None:
+        key = event.key()
+        KEYS = Qt.Key
+        isEnter = key in [KEYS.Key_Enter, KEYS.Key_Return]
+        if key == isEnter:
+            print("Pressionou enter.")
+        return super().keyPressEvent(event)
+
+Se o return "return super().keyPressEvent(event)" for retirado, a pessoa
+não irá conseguir digitar nada, porém, você ainda pode captar as teclas e fazer
+algo, o que dependendo é bem recomendado.

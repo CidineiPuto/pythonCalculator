@@ -1,0 +1,55 @@
+def setupTheme():
+    qdarktheme.setup_theme(
+        theme="dark", O tema é "dark"
+        corner_shape="rounded", deixa o cantinho do display arredondado
+        custom_colors={
+            "[dark]": {
+                "primary": "#1e81b0", # A cor primária do tema dark, fica um azul meio escuro
+            },
+            "[light]": {
+                "primary": "#1e81b0", # A cor primária do tema dark, fica um azul meio claro
+            },
+        },
+    )
+
+
+qss = """
+    PushButton[cssClass="specialButton"] { 
+        color: #fff;
+        background: "#1e81b0;
+    }
+    PushButton[cssClass="specialButton"]:hover {
+        color: #fff;
+        background: #16658a;
+    }
+    PushButton[cssClass="specialButton"]:pressed {
+        color: #fff;
+        background: #115270;
+    }
+"""
+
+PushButton é o nome da classe sendo utilizada.
+cssClass="specialButton"; quer dizer que terá uma classe de css que será criada
+dentro do botão, e será selecionada através desse qss o botão. Pois o specialButton
+que é um sinal de [+, -, /, * e ^] no caso um sinal especial, terá a cor branca e o 
+background daquela cor azul marinho. Esses seriam os botões da calculadora, no caso.
+
+Quando é colocado o fstring desta forma:
+
+qss = f"""
+    PushButton[cssClass="specialButton"] {{
+        color: #fff;
+        background: "#1e81b0";
+    }}
+    PushButton[cssClass="specialButton"]:hover {{
+        color: #fff;
+        background: #16658a;
+    }}
+    PushButton[cssClass="specialButton"]:pressed {{
+        color: #fff;
+        background: #115270;
+    }}
+"""
+
+com "{{}}" é para que o leitor deixe o "{}" de maneira que será possível ler como uma
+string normal.

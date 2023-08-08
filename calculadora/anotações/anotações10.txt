@@ -1,0 +1,15 @@
+ pyinstaller --name="Calculadora" --noconfirm --onefile --add-data='calculadora\files\;files\' --icon='calculadora\files\icon.ico' --noconsole --clean --log-level=WARN .\calculadora\main.py
+Isto é do pyinstaller para empacotar e criar o arquivo.
+
+Caso coloque 
+
+pyinstaller --name="Calculadora" --noconfirm --onefile --add-data='calculadora\files\;files\' --icon='calculadora\files\icon.png' --noconsole --clean --log-level=WARN  --distpath="__localcode\dist" --workpath="__localcode\build" --specpath="__localcode\" .\calculadora\main.py
+
+irá ocorrer um erro, para resolver o erro, faça isto:
+
+pyinstaller --name="Calculadora" --noconfirm --onefile --add-data='..\calculadora\files\;files\' --icon='..\calculadora\files\icon.png' --noconsole --clean --log-level=WARN  --distpath="__localcode\dist" --workpath="__localcode\build" --specpath="__localcode\" .\calculadora\main.py
+
+Agora, o "..\" é usado para o caminho sair do "__localcode" cujo está puxando o caminho, tentando fazer ser encontrado o arquivo files dentro dele
+por exemplo, iria ocorrer este erro;
+
+Unable to find "YOUR_PATH\__localcode\calculadora\files" when adding binary and data files.

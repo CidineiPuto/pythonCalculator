@@ -1,0 +1,36 @@
+        if text == "C":
+            slot = self._makeSlot(self.display.clear)  # limpa o display
+            self._connectButtonClicked(button, slot)
+
+existe uma forma bem mais simples de fazer isto, porém o slot está sendo
+feita dessa maneira mais complexa pois na nossa própria calculadora, varias
+coisas serão limpas. Porém, a forma de fazer isso mais simples é:
+
+if text == "C":
+    button.clicked.connect(self.display.clear)
+
+Ou fazemos uma classe e passamos lá dentro, caso for feito mais coisas no clear
+
+    def _configSpecialButton(self, button):
+        text = button.text()
+        if text == "C":
+            self._connectButtonClicked(button, self._clear)
+
+    def _clear(self):
+        self.display.clear()
+
+
+Mas se alguma coisa for ter que ser passada no clear, é recomendado usar
+o slot.
+
+    def _configSpecialButton(self, button):
+        text = button.text()
+        if text == "C":
+            slot = self._makeSlot(self._clear, "Mensagem pica") 
+            self._connectButtonClicked(button, slot)
+
+    def _clear(self, msg):
+        print(msg)
+        self.display.clear()
+
+

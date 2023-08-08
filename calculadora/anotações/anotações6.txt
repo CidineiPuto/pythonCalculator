@@ -1,0 +1,55 @@
+circular import: O python dará um erro, dizendo que provavelmente o problema
+visto é um import circular, quando o módulo importa um módulo que importa este
+mesmo módulo, ex:
+
+from display import Display 
+
+se for no Display, e tipar algo relacionado com button, e do button você importar
+o display, seria um import circular.
+
+E você queira tipar alguma coisa por exemplo.
+
+Será necessário importar algo chamado TYPE_CHECKING
+logo irá colocar 
+
+if TYPE_CHECKING:
+    from buttons import Button
+
+pronto, agora a variável quando for executada no código irá retornar false.
+
+button: "Button"
+
+Se for colocado assim, o botão, agora será do type button, e claro, terá que
+colocar em ("") para funcionar. Podendo colocar até em uma classe.
+
+class Display(QLineEdit):
+    def __init__(self, button: "Button", *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.configStyle()
+        self.button = button
+
+Agora, o vscode irá saber que button é do tipo "Button" e terá todas as propriedades
+e métodos do mesmo.
+
+O TYPE_CHECKING, quando está usando um Typin checking, como mypy e etc,
+quando for TYPE_CHECKING em que está só checando o tipo, essa variável é True,
+quando estiver executando o código, a variável será false.
+
+Getter e setter é bom ser usado quando irá ter uma variável que tenha um valor
+específico, e com um setter quando o valor for setado, a variável também será
+configurada, um caso aonde getter e setter fosse usada.
+Ex: 
+
+        self._equation = ""
+        self._makeGrid()
+
+    @property
+    def equation(self):
+        return self._equation
+
+    @equation.setter
+    def equation(self, value: str):
+        self._equation = value
+        self.info.setText(value)
+
+
